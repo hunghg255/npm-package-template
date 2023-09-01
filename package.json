@@ -11,7 +11,7 @@
     "start": "esno src/index.ts",
     "test": "vitest",
     "verify-commit": "verify-commit-msg",
-    "postinstall": "git-scm-hooks",
+    "prepare": "git-scm-hooks",
     "release": "bumpp -r && npm publish"
   },
   "keywords": [],
