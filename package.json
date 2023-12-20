@@ -2,11 +2,20 @@
   "name": "npm-package-template",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
-    "build": "tsup index.ts --format cjs,esm --dts",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "watch": "npm run build -- --watch src",
+    "prepublishOnly": "npm run build",
     "lint": "tsc",
     "start": "esno src/index.ts",
     "test": "vitest",
@@ -18,10 +27,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "bumpp": "^9.2.0",
+    "bumpp": "^9.2.1",
     "git-scm-hooks": "^0.0.7",
-    "tsup": "^6.7.0",
-    "typescript": "^4.9.5",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
     "verify-commit-msg": "^0.0.10"
   },
   "git-hooks": {
